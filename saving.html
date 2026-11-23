@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savings & Goals - Expense Manager</title>
+    <link rel="stylesheet" href="style.css">
+     <nav class="navbar-top">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="logo.jpeg" alt="Logo" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="about.html"><i class="fa-solid fa-chart-pie"></i> About</a></li>
+                <li><a href="http://localhost/PROJECT/addexpense.php"><i class="fa-solid fa-circle-plus"></i> Add Expense</a></li>
+                <li><a href="transactionhistory.php"><i class="fa-solid fa-right-left"></i> Transaction History </a></li>
+                <li><a href="Reports.php"><i class="fa-solid fa-chart-line"></i> Reports</a></li>
+                  <li><a href="saving.html"><i class="fa-solid fa-piggy-bank"></i> Saving/Goals</a></li>
+                <li>
+                    <a href="profile.html" class="active" id="profile-nav-link">
+                        <i class="fa-solid fa-user-gear"></i> <span id="nav-user-name">Profile</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <style>
+        .goals-wrapper {
+            max-width: 1050px;
+            margin: 24px auto 48px auto;
+            padding: 0 20px;
+            color: #1f2937;
+        }
+
+        .goals-header {
+            margin-bottom: 22px;
+        }
+
+        .goals-header h1 {
+            margin: 0 0 6px 0;
+            font-size: 26px;
+            color: #111827;
+        }
+
+        .goals-header p {
+            margin: 0;
+            color: #4b5563;
+            font-size: 14.5px;
+        }
+
+        .goals-summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .g-stat-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 18px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            border-left: 4px solid #16a34a;
+        }
+
+        .g-stat-label {
+            display: block;
+            font-size: 13px;
+            color: #6b7280;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .g-stat-val {
+            font-size: 22px;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .goal-form-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            margin-bottom: 26px;
+        }
+
+        .goal-form-card h2 {
+            margin: 0 0 14px 0;
+            font-size: 18px;
+            color: #111827;
+        }
+
+        .goal-form-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto;
+            gap: 12px;
+            align-items: end;
+        }
+
+        .field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .field-group label {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .field-group input {
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #111827;
+        }
+
+        .btn-add-goal {
+            padding: 10px 18px;
+            background-color: #16a34a;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .goals-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .goal-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .goal-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .goal-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .goal-pct {
+            font-size: 14px;
+            font-weight: 700;
+            color: #15803d;
+        }
+
+        .goal-amounts {
+            font-size: 14px;
+            color: #4b5563;
+            margin-bottom: 10px;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 10px;
+            background-color: #e5e7eb;
+            border-radius: 999px;
+            overflow: hidden;
+            margin-bottom: 14px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #16a34a;
+            transition: width 0.25s ease;
+        }
+
+        .goal-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-quick {
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+            background: #f9fafb;
+            color: #111827;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-del {
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: none;
+            background: #fee2e2;
+            color: #991b1b;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .goals-summary,
+            .goal-form-grid,
+            .goals-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Yahan apna navbar HTML paste karein -->
+
+    <main class="goals-wrapper">
+        <div class="goals-header">
+            <h1>Savings & Goals</h1>
+            <p>Set saving targets and track how close you are to each goal.</p>
+        </div>
+
+        <section class="goals-summary">
+            <div class="g-stat-card">
+                <span class="g-stat-label">Total Goal Target</span>
+                <span class="g-stat-val" id="sumTarget">₹0.00</span>
+            </div>
+            <div class="g-stat-card">
+                <span class="g-stat-label">Total Saved</span>
+                <span class="g-stat-val" id="sumSaved">₹0.00</span>
+            </div>
+            <div class="g-stat-card">
+                <span class="g-stat-label">Overall Progress</span>
+                <span class="g-stat-val" id="sumPct">0%</span>
+            </div>
+        </section>
+
+        <section class="goal-form-card">
+            <h2>Add a New Saving Goal</h2>
+            <form id="goalForm" class="goal-form-grid">
+                <div class="field-group">
+                    <label for="goalName">Goal Name</label>
+                    <input type="text" id="goalName" placeholder="e.g., Emergency Fund" required>
+                </div>
+                <div class="field-group">
+                    <label for="goalTarget">Target Amount (₹)</label>
+                    <input type="number" id="goalTarget" min="1" step="0.01" placeholder="10000" required>
+                </div>
+                <div class="field-group">
+                    <label for="goalSaved">Already Saved (₹)</label>
+                    <input type="number" id="goalSaved" min="0" step="0.01" value="0">
+                </div>
+                <button type="submit" class="btn-add-goal">+ Add Goal</button>
+            </form>
+        </section>
+
+        <section class="goals-list" id="goalsList"></section>
+    </main>
+
+    <!-- Yahan apna footer HTML paste karein -->
+
+    <script>
+        const STORAGE_KEY = "expense_manager_goals_v1";
+        let goals = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+
+        const goalForm = document.getElementById("goalForm");
+        const goalsList = document.getElementById("goalsList");
+
+        function saveAndRender() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(goals));
+            renderGoals();
+        }
+
+        function renderGoals() {
+            let totalTarget = 0;
+            let totalSaved = 0;
+
+            goals.forEach(g => {
+                totalTarget += Number(g.target) || 0;
+                totalSaved += Number(g.saved) || 0;
+            });
+
+            const overallPct = totalTarget > 0 ? Math.min(100, Math.round((totalSaved / totalTarget) * 100)) : 0;
+
+            document.getElementById("sumTarget").textContent = "₹" + totalTarget.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById("sumSaved").textContent = "₹" + totalSaved.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById("sumPct").textContent = overallPct + "%";
+
+            if (goals.length === 0) {
+                goalsList.innerHTML = `<div class="goal-card"><p class="goal-amounts">No saving goals added yet. Create one above to start tracking.</p></div>`;
+                return;
+            }
+
+            goalsList.innerHTML = goals.map((g, idx) => {
+                const target = Number(g.target) || 1;
+                const saved = Number(g.saved) || 0;
+                const pct = Math.min(100, Math.round((saved / target) * 100));
+
+                return `
+                    <div class="goal-card">
+                        <div class="goal-top">
+                            <span class="goal-title">${escapeHtml(g.name)}</span>
+                            <span class="goal-pct">${pct}%</span>
+                        </div>
+                        <div class="goal-amounts">
+                            Saved: <strong>₹${saved.toLocaleString("en-IN")}</strong> / Target: ₹${target.toLocaleString("en-IN")}
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" style="width: ${pct}%;"></div>
+                        </div>
+                        <div class="goal-actions">
+                            <button type="button" class="btn-quick" onclick="addMoney(${idx}, 500)">+ ₹500</button>
+                            <button type="button" class="btn-quick" onclick="addMoney(${idx}, 1000)">+ ₹1,000</button>
+                            <button type="button" class="btn-del" onclick="deleteGoal(${idx})">Delete</button>
+                        </div>
+                    </div>
+                `;
+            }).join("");
+        }
+
+        window.addMoney = function(index, amount) {
+            goals[index].saved = (Number(goals[index].saved) || 0) + amount;
+            saveAndRender();
+        };
+
+        window.deleteGoal = function(index) {
+            goals.splice(index, 1);
+            saveAndRender();
+        };
+
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;");
+        }
+
+        goalForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const name = document.getElementById("goalName").value.trim();
+            const target = parseFloat(document.getElementById("goalTarget").value);
+            const saved = parseFloat(document.getElementById("goalSaved").value) || 0;
+
+            if (!name || isNaN(target) || target <= 0) return;
+
+            goals.push({ name, target, saved });
+            goalForm.reset();
+            document.getElementById("goalSaved").value = "0";
+            saveAndRender();
+        });
+
+        renderGoals();
+    </script>
+     <!-- Professional Footer -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Invoices</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>+91 98765 43210</p>
+                <p>support@expensemanager.com</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Expense Manager App. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

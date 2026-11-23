@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Manager - Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sticky Top Navbar -->
+    <nav class="navbar-top">
+        <div class="nav-container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="logo.jpeg" alt="Logo" class="logo-img">
+                </a>
+            </div>
+           <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="about.html"><i class="fa-solid fa-chart-pie"></i> About</a></li>
+                <li><a href="http://localhost/PROJECT/addexpense.php"><i class="fa-solid fa-circle-plus"></i> Add Expense</a></li>
+                <li><a href="transactionhistory.php"><i class="fa-solid fa-right-left"></i> Transaction History </a></li>
+                <li><a href="Reports.php"><i class="fa-solid fa-chart-line"></i> Reports</a></li>
+                  <li><a href="saving.html"><i class="fa-solid fa-piggy-bank"></i> Saving/Goals</a></li>
+                <li>
+                    <a href="profile.html" class="active" id="profile-nav-link">
+                        <i class="fa-solid fa-user-gear"></i> <span id="nav-user-name">Profile</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Profile Page Content -->
+    <div class="main-content profile-page-wrapper">
+        <div class="profile-page-card" id="profile-view-box">
+            <div class="profile-header-banner">
+                <div class="profile-big-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <h1 id="p-name">User Name</h1>
+                <p id="p-email" class="p-email">user@example.com</p>
+            </div>
+
+            <div class="profile-info-grid">
+                <div class="info-item">
+                    <span class="info-label"><i class="fa-solid fa-wallet"></i> Monthly Budget</span>
+                    <strong class="info-value" id="p-budget">₹0</strong>
+                </div>
+                <div class="info-item">
+                    <span class="info-label"><i class="fa-solid fa-coins"></i> Preferred Currency</span>
+                    <strong class="info-value" id="p-currency">₹</strong>
+                </div>
+            </div>
+
+            <div class="profile-page-actions">
+                <button type="button" class="btn-outline-navy" onclick="toggleEditMode(true)">
+                    <i class="fa-solid fa-pen-to-square"></i> Edit Details
+                </button>
+                <button type="button" class="btn-danger-outline" onclick="signOutUser()">
+                    <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+                </button>
+            </div>
+        </div>
+
+        <!-- Edit Form Box (Initially Hidden) -->
+        <div class="profile-page-card hidden-box" id="profile-edit-box">
+            <h2>Edit Profile Details</h2>
+            <p class="p-subtext">Update your name, email, budget, or currency preference.</p>
+
+            <form id="edit-profile-form" onsubmit="updateProfileDetails(event)">
+                <div class="form-group">
+                    <label for="edit-name">Full Name</label>
+                    <input type="text" id="edit-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-email">Email Address</label>
+                    <input type="email" id="edit-email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-budget">Monthly Budget</label>
+                    <input type="number" id="edit-budget" min="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-currency">Preferred Currency</label>
+                    <select id="edit-currency">
+                        <option value="₹">INR (₹)</option>
+                        <option value="$">USD ($)</option>
+                        <option value="€">EUR (€)</option>
+                    </select>
+                </div>
+
+                <div class="profile-page-actions">
+                    <button type="submit" class="btn-green">Save Changes</button>
+                    <button type="button" class="btn-outline-navy" onclick="toggleEditMode(false)">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function loadProfilePage() {
+            const saved = JSON.parse(localStorage.getItem("expenseUserProfile"));
+            const navNameEl = document.getElementById("nav-user-name");
+
+            if (!saved || !saved.name) {
+                window.location.href = "index.html";
+                return;
+            }
+
+            if (navNameEl) navNameEl.innerText = saved.name;
+            document.getElementById("p-name").innerText = saved.name;
+            document.getElementById("p-email").innerText = saved.email;
+            document.getElementById("p-budget").innerText = `${saved.currency}${Number(saved.budget).toLocaleString()}`;
+            document.getElementById("p-currency").innerText = saved.currency;
+        }
+
+        function toggleEditMode(isEditing) {
+            const viewBox = document.getElementById("profile-view-box");
+            const editBox = document.getElementById("profile-edit-box");
+            const saved = JSON.parse(localStorage.getItem("expenseUserProfile"));
+
+            if (isEditing && saved) {
+                document.getElementById("edit-name").value = saved.name || "";
+                document.getElementById("edit-email").value = saved.email || "";
+                document.getElementById("edit-budget").value = saved.budget || "";
+                document.getElementById("edit-currency").value = saved.currency || "₹";
+
+                viewBox.classList.add("hidden-box");
+                editBox.classList.remove("hidden-box");
+            } else {
+                editBox.classList.add("hidden-box");
+                viewBox.classList.remove("hidden-box");
+            }
+        }
+
+        function updateProfileDetails(event) {
+            event.preventDefault();
+
+            const updatedProfile = {
+                name: document.getElementById("edit-name").value.trim(),
+                email: document.getElementById("edit-email").value.trim(),
+                budget: document.getElementById("edit-budget").value.trim(),
+                currency: document.getElementById("edit-currency").value
+            };
+
+            localStorage.setItem("expenseUserProfile", JSON.stringify(updatedProfile));
+            loadProfilePage();
+            toggleEditMode(false);
+        }
+
+        function signOutUser() {
+            localStorage.removeItem("expenseUserProfile");
+            window.location.href = "index.html";
+        }
+
+        loadProfilePage();
+    </script>
+    <!-- Professional Footer -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Invoices</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>+91 98765 43210</p>
+                <p>support@expensemanager.com</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Expense Manager App. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

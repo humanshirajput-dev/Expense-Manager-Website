@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Expense Manager</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Fixed Sticky Navbar (Row Format) -->
+    <nav class="navbar-top">
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="logo.jpeg" alt="Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="about.html"><i class="fa-solid fa-chart-pie"></i> About</a></li>
+                <li><a href="http://localhost/PROJECT/addexpense.php"><i class="fa-solid fa-circle-plus"></i> Add Expense</a></li>
+                <li><a href="transactionhistory.php"><i class="fa-solid fa-right-left"></i> Transaction History </a></li>
+                <li><a href="Reports.php"><i class="fa-solid fa-chart-line"></i> Reports</a></li>
+                  <li><a href="saving.html"><i class="fa-solid fa-piggy-bank"></i> Saving/Goals</a></li>
+                <li>
+                    <a href="profile.html" class="active" id="profile-nav-link">
+                        <i class="fa-solid fa-user-gear"></i> <span id="nav-user-name">Profile</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Optional: Paste your navbar markup right here if needed -->
+
+    <main class="about-page">
+        <section class="about-hero">
+            <span class="about-tag">About Expense Manager</span>
+            <h1>Track Every Rupee Without the Clutter</h1>
+            <p class="about-subtitle">
+                Expense Manager helps you log daily expenses in seconds, keep your records safely in MySQL,
+                and review your spending history in one clear, organized view.
+            </p>
+        </section>
+
+        <section class="about-grid">
+            <div class="about-card">
+                <h2>Why We Built This</h2>
+                <p>
+                    Small daily spends—like food, travel, UPI payments, and essentials—add up fast.
+                    This app gives you a simple place to record entries as they happen and see where your money goes.
+                </p>
+            </div>
+
+            <div class="about-card">
+                <h2>How It Works</h2>
+                <ul class="about-list">
+                    <li><strong>Add Expense:</strong> Enter title, amount, category, date, payment mode, and notes.</li>
+                    <li><strong>Persistent Storage:</strong> Entries are saved directly to your MySQL database.</li>
+                    <li><strong>Transaction History:</strong> View all recorded expenses neatly in a structured table.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="about-highlights">
+            <div class="highlight-box">
+                <span class="highlight-title">Fast Entry</span>
+                <span class="highlight-desc">Clean form with today's date ready</span>
+            </div>
+            <div class="highlight-box">
+                <span class="highlight-title">Database Backed</span>
+                <span class="highlight-desc">Reliable storage with PHP &amp; MySQL</span>
+            </div>
+            <div class="highlight-box">
+                <span class="highlight-title">Clear Overview</span>
+                <span class="highlight-desc">Easy-to-read transaction logs &amp; totals</span>
+            </div>
+        </section>
+
+        <div class="about-actions">
+            <a href="addexpense.php" class="btn-primary">Add New Expense</a>
+            <a href="transactionhistory.php" class="btn-secondary">View Transaction History</a>
+        </div>
+    </main>
+    <!-- Professional Footer -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Invoices</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>+91 98765 43210</p>
+                <p>support@expensemanager.com</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Expense Manager App. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+<style>
+    .about-page {
+        max-width: 1000px !important;
+        margin: 95px auto 40px auto !important;
+        padding: 0 20px !important;
+        font-family: Arial, sans-serif !important;
+        color: #1f2937 !important;
+        background: transparent !important;
+    }
+
+    .about-hero {
+        background-color: #ffffff !important;
+        color: #1f2937 !important;
+        border-radius: 14px !important;
+        padding: 32px 28px !important;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+        margin-bottom: 24px !important;
+        border-left: 5px solid #166534 !important;
+    }
+
+    .about-tag {
+        display: inline-block !important;
+        background-color: #ecfdf5 !important;
+        color: #065f46 !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        padding: 5px 12px !important;
+        border-radius: 999px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .about-hero h1 {
+        margin: 0 0 12px 0 !important;
+        font-size: 28px !important;
+        color: #111827 !important;
+        line-height: 1.25 !important;
+    }
+
+    .about-subtitle {
+        margin: 0 !important;
+        font-size: 15px !important;
+        line-height: 1.65 !important;
+        color: #4b5563 !important;
+        max-width: 760px !important;
+    }
+
+    .about-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+        margin-bottom: 24px !important;
+    }
+
+    .about-card {
+        background-color: #ffffff !important;
+        color: #1f2937 !important;
+        border-radius: 12px !important;
+        padding: 24px !important;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07) !important;
+    }
+
+    .about-card h2 {
+        margin: 0 0 12px 0 !important;
+        font-size: 19px !important;
+        color: #111827 !important;
+    }
+
+    .about-card p,
+    .about-list,
+    .about-list li {
+        color: #374151 !important;
+        font-size: 14.5px !important;
+        line-height: 1.65 !important;
+    }
+
+    .about-list {
+        margin: 0 !important;
+        padding-left: 18px !important;
+    }
+
+    .about-list li {
+        margin-bottom: 8px !important;
+    }
+
+    .about-highlights {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 16px !important;
+        margin-bottom: 28px !important;
+    }
+
+    .highlight-box {
+        background-color: #ffffff !important;
+        color: #1f2937 !important;
+        border: 1px solid #e5e7eb !important;
+        border-radius: 10px !important;
+        padding: 18px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 6px !important;
+    }
+
+    .highlight-title {
+        font-size: 15px !important;
+        font-weight: 700 !important;
+        color: #111827 !important;
+    }
+
+    .highlight-desc {
+        font-size: 13.5px !important;
+        color: #4b5563 !important;
+        line-height: 1.45 !important;
+    }
+
+    .about-actions {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 14px !important;
+    }
+
+    .about-actions .btn-primary,
+    .about-actions .btn-secondary {
+        display: inline-block !important;
+        text-decoration: none !important;
+        padding: 11px 20px !important;
+        border-radius: 8px !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+    }
+
+    .about-actions .btn-primary {
+        background-color: #166534 !important;
+        color: #ffffff !important;
+    }
+
+    .about-actions .btn-secondary {
+        background-color: #ffffff !important;
+        color: #1f2937 !important;
+        border: 1px solid #d1d5db !important;
+    }
+
+    @media (max-width: 768px) {
+        .about-grid,
+        .about-highlights {
+            grid-template-columns: 1fr !important;
+        }
+    }
+    .about-page {
+    max-width: 1000px !important;
+    margin: 20px auto 40px auto !important;
+    padding: 0 20px !important;
+    font-family: Arial, sans-serif !important;
+    color: #1f2937 !important;
+    background: transparent !important;
+}
+</style>

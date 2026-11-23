@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Manager - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="splash-screen">
+  <div class="splash-logo-wrap" id="splashLogo">
+    <img src="logo.jpeg" alt="Expense Manager Website Logo">
+  </div>
+</div>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Manager - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Top Fixed Sticky Navbar (Row Format) -->
+    <nav class="navbar-top">
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="logo.jpeg" alt="Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="about.html"><i class="fa-solid fa-chart-pie"></i> About</a></li>
+                <li><a href="http://localhost/PROJECT/addexpense.php"><i class="fa-solid fa-circle-plus"></i> Add Expense</a></li>
+                <li><a href="transactionhistory.php"><i class="fa-solid fa-right-left"></i> Transaction History </a></li>
+                <li><a href="Reports.php"><i class="fa-solid fa-chart-line"></i> Reports</a></li>
+                  <li><a href="saving.html"><i class="fa-solid fa-piggy-bank"></i> Saving/Goals</a></li>
+                <li>
+                    <a href="profile.html" class="active" id="profile-nav-link">
+                        <i class="fa-solid fa-user-gear"></i> <span id="nav-user-name">Profile</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+        
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-text">
+                <h1>Take Control of Your Spending, Effortlessly</h1>
+                <p>Manage your money smartly with our powerful expense tracker.</p>
+                <button type="button" class="btn-green" onclick="openSetupModal()">Get Started Free</button>
+            </div>
+            <div class="hero-image">
+                <!-- Clean UI mockup representation or clean placeholder image -->
+                <div class="mockup-card">
+                    <i class="fa-solid fa-wallet mockup-icon"></i>
+                    <h3>Smart Financial Overview</h3>
+                    <p>Track, Analyze & Save More</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features / Tracking Cards Section -->
+        <section class="features-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-calendar-days feature-icon"></i>
+                <h3>Daily Tracking</h3>
+                <p>Manage your money, daily tracking and reports.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-wallet feature-icon"></i>
+                <h3>Income & Balance</h3>
+                <p>Manage your transactions & income & balance.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-chart-pie feature-icon"></i>
+                <h3>Monthly Reports</h3>
+                <p>Manage your money monthly reports.</p>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps-container">
+                <div class="step-box">
+                    <div class="step-number">1</div>
+                    <h4>Simple Steps</h4>
+                    <p>Create your account and set your monthly budget easily.</p>
+                </div>
+                <div class="step-box">
+                    <div class="step-number">2</div>
+                    <h4>Add Expense</h4>
+                    <p>Record your daily spending and categorize transactions.</p>
+                </div>
+                <div class="step-box">
+                    <div class="step-number">3</div>
+                    <h4>Track Reports</h4>
+                    <p>Analyze your monthly reports and save money smartly.</p>
+                </div>
+            </div>
+        </section>
+
+       <!-- What Users Say (Interactive Slider) -->
+<section class="testimonials-section">
+    <h2>What Users Say</h2>
+    <div class="testimonial-slider">
+        <!-- Left Arrow -->
+        <button class="slider-arrow" onclick="prevReview()" aria-label="Previous Review">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <!-- Review Content -->
+        <div class="testimonial-box">
+            <i class="fa-solid fa-quote-left quote-icon"></i>
+            <p id="review-text">"This Expense Manager has completely changed how I track my daily spending. The reports are super clean and easy to understand!"</p>
+            <h4 id="review-author">Aarav Sharma</h4>
+            
+            <!-- Slider Dots -->
+            <div class="slider-dots">
+                <span class="dot active" onclick="goToReview(0)"></span>
+                <span class="dot" onclick="goToReview(1)"></span>
+                <span class="dot" onclick="goToReview(2)"></span>
+                <span class="dot" onclick="goToReview(3)"></span>
+            </div>
+        </div>
+
+        <!-- Right Arrow -->
+        <button class="slider-arrow" onclick="nextReview()" aria-label="Next Review">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
+</section>
+    </div>
+
+    <!-- Professional Footer -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Invoices</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>+91 98765 43210</p>
+                <p>support@expensemanager.com</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Expense Manager App. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- 1. Get Started Setup Form Modal -->
+<div id="setup-modal" class="modal-overlay">
+    <div class="modal-box">
+        <span class="close-modal" onclick="closeModal('setup-modal')">&times;</span>
+        <h2>Setup Your Expense Profile</h2>
+        <p class="modal-subtext">Enter your basic details to personalize your tracker.</p>
+
+        <form id="user-setup-form" onsubmit="saveUserProfile(event)">
+            <div class="form-group">
+                <label for="user-name">Full Name</label>
+                <input type="text" id="user-name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="user-email">Email Address</label>
+                <input type="email" id="user-email" placeholder="name@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="monthly-budget">Monthly Budget Goal</label>
+                <input type="number" id="monthly-budget" placeholder="e.g. 15000" min="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="currency-select">Preferred Currency</label>
+                <select id="currency-select">
+                    <option value="₹">INR (₹)</option>
+                    <option value="$">USD ($)</option>
+                    <option value="€">EUR (€)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-green full-width-btn">Save & Continue</button>
+        </form>
+    </div>
+</div>
+
+<!-- 2. User Profile View Modal -->
+<div id="profile-modal" class="modal-overlay">
+    <div class="modal-box profile-card">
+        <span class="close-modal" onclick="closeModal('profile-modal')">&times;</span>
+        <div class="profile-avatar-circle">
+            <i class="fa-solid fa-user"></i>
+        </div>
+        <h2 id="card-user-name">User Name</h2>
+        <p id="card-user-email" class="profile-email">user@example.com</p>
+
+        <div class="profile-details-box">
+            <div class="detail-row">
+                <span>Monthly Budget:</span>
+                <strong id="card-user-budget">₹0</strong>
+            </div>
+            <div class="detail-row">
+                <span>Currency:</span>
+                <strong id="card-user-currency">INR (₹)</strong>
+            </div>
+        </div>
+
+        <div class="profile-actions">
+            <button type="button" class="btn-outline-navy" onclick="editProfile()">Edit Profile</button>
+            <a href="dashboard.html" class="btn-green">Go to Dashboard</a>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    // Users ke reviews ka data
+    
+    let activeIndex = 0;
+
+    function showReview(index) {
+        document.getElementById("review-text").innerText = userReviews[index].text;
+        document.getElementById("review-author").innerText = userReviews[index].author;
+
+        // Dots ka active color update karna
+        const dots = document.querySelectorAll(".dot");
+        dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
+        });
+    }
+
+    function nextReview() {
+        activeIndex = (activeIndex + 1) % userReviews.length;
+        showReview(activeIndex);
+    }
+
+    function prevReview() {
+        activeIndex = (activeIndex - 1 + userReviews.length) % userReviews.length;
+        showReview(activeIndex);
+    }
+
+    function goToReview(index) {
+        activeIndex = index;
+        showReview(activeIndex);
+    }
+
+
+    window.addEventListener("load", () => {
+  const splash = document.getElementById("splash-screen");
+  const splashLogo = document.getElementById("splashLogo");
+
+  setTimeout(() => {
+    splashLogo.classList.add("zoom-out");
+  }, 650);
+
+  setTimeout(() => {
+    splash.classList.add("hide");
+  }, 1350);
+});
+
+
+    // 1. Active nav link highlight
+    const currentLocation = location.href;
+    const menuItem = document.querySelectorAll('.nav-links a');
+    for (let i = 0; i < menuItem.length; i++) {
+        if (menuItem[i].href === currentLocation) {
+            menuItem[i].classList.add("active");
+        }
+    }
+
+    // 2. Testimonials slider logic
+    const userReviews = [
+        {
+            text: '"This Expense Manager has completely changed how I track my daily spending. The reports are super clean and easy to understand!"',
+            author: "Aarav Sharma"
+        },
+        {
+            text: '"Managing monthly budgets used to be stressful, but with clear categories and instant balance updates, I save much more every month."',
+            author: "Priya Verma"
+        },
+        {
+            text: '"Simple, fast, and super clean interface. I love how easily I can record expenses on the go and check my financial goals anytime."',
+            author: "Rohan Mehta"
+        },
+        {
+            text: '"Best personal finance tracker I have used! The monthly summaries help me spot unnecessary expenses immediately."',
+            author: "Sneha Kapoor"
+        }
+    ];
+
+    
+
+    function nextReview() {
+        activeIndex = (activeIndex + 1) % userReviews.length;
+        showReview(activeIndex);
+    }
+
+    function prevReview() {
+        activeIndex = (activeIndex - 1 + userReviews.length) % userReviews.length;
+        showReview(activeIndex);
+    }
+
+    function goToReview(index) {
+        activeIndex = index;
+        showReview(activeIndex);
+    }
+
+    // --- 3. Setup Modal, Already Signed In & Profile Page Logic ---
+function openSetupModal() {
+    const saved = JSON.parse(localStorage.getItem("expenseUserProfile"));
+
+    // Agar user pehle se signed in hai toh setup form nahi khulega
+    if (saved && saved.name) {
+        openAlreadySignedInModal(saved);
+        return;
+    }
+
+    const modal = document.getElementById("setup-modal");
+    if (modal) {
+        modal.classList.add("show");
+    }
+}
+
+function openAlreadySignedInModal(saved) {
+    let infoModal = document.getElementById("already-signed-modal");
+
+    if (!infoModal) {
+        infoModal = document.createElement("div");
+        infoModal.id = "already-signed-modal";
+        infoModal.className = "modal-overlay";
+        infoModal.innerHTML = `
+            <div class="modal-box profile-card">
+                <span class="close-modal" onclick="closeModal('already-signed-modal')">&times;</span>
+                <div class="profile-avatar-circle">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h2>You Are Already Signed In</h2>
+                <p class="profile-email" id="signed-in-user-text"></p>
+                <div class="profile-actions">
+                    <a href="profile.html" class="btn-green">Open Profile</a>
+                    <button type="button" class="btn-outline-navy" onclick="signOutFromHome()">Sign Out</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(infoModal);
+    }
+
+    document.getElementById("signed-in-user-text").innerText =
+        `Signed in as ${saved.name} (${saved.email}).`;
+    infoModal.classList.add("show");
+}
+
+function signOutFromHome() {
+    localStorage.removeItem("expenseUserProfile");
+    closeModal("already-signed-modal");
+    renderProfileUI();
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove("show");
+    }
+}
+
+function saveUserProfile(event) {
+    event.preventDefault();
+
+    const profileData = {
+        name: document.getElementById("user-name").value.trim(),
+        email: document.getElementById("user-email").value.trim(),
+        budget: document.getElementById("monthly-budget").value.trim(),
+        currency: document.getElementById("currency-select").value
+    };
+
+    localStorage.setItem("expenseUserProfile", JSON.stringify(profileData));
+    closeModal("setup-modal");
+    window.location.href = "profile.html";
+}
+
+function renderProfileUI() {
+    const saved = JSON.parse(localStorage.getItem("expenseUserProfile"));
+    const navNameEl = document.getElementById("nav-user-name");
+    if (!navNameEl) return;
+
+    if (saved && saved.name) {
+        navNameEl.innerText = saved.name;
+    } else {
+        navNameEl.innerText = "Profile";
+    }
+}
+
+function handleProfileClick(event) {
+    event.preventDefault();
+    const saved = JSON.parse(localStorage.getItem("expenseUserProfile"));
+    if (saved && saved.name) {
+        window.location.href = "profile.html";
+    } else {
+        openSetupModal();
+    }
+}
+
+renderProfileUI();
+</script>
+</body>
+</html>
